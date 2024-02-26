@@ -1,17 +1,18 @@
-class Character:
-    def __init__(self, name, hp):
+from colorama import Fore
+
+class Character():
+    def __init__(self, name, hp, weapon, armor, isPlayer1):
         self.name = name
         self.hp = hp
-        
+        self.weapon = weapon
+        self.armor = armor
+        self.isPlayer1 = isPlayer1
 
-def attack(self, target,weapon):
-        if self.weapon:
-            damage = self.weapon.damage
-            target.receive_damage(damage)
+    def attack(self, target, isPlayer=False):  # Ajoutez isPlayer=False comme argument
+        damages = (self.weapon.damage - target.armor.protection)
 
-def receive_damage(self, damage):
-        if self.armor:
-            damage -= self.armor.defense
-        self.hp -= max(0, damage)
-        if self.hp <= 0:
-            print(f"{self.name} has been defeated!")
+        if damages < 0:
+            damages = 0
+        target.hp -= damages
+
+        return Fore.GREEN + f"{self.name} inflige {damages} dégâts ! Il reste {target.hp} HP à {target.name}" + Fore.RESET
