@@ -1,4 +1,3 @@
-# main.py
 from gears.weapon import Weapon
 from gears.armor import Armor
 from arena import Arena
@@ -22,7 +21,6 @@ def main():
             return Wizard(name="Bot Magicien", hp=80, mana=100, weapon=Weapon(name="Dague", damage=15), armor=Armor(name="Cape magique", protection=5), isPlayer1=False, spells=[Spell(name="Boule de feu", damage=35, mana_cost=15)])
 
     while True:
-        # Utilisateur choisit un personnage en entrant "1" pour Barbare ou "2" pour Magicien
         player_choice = input(Fore.BLUE +"Choisissez votre personnage (1 pour Barbare / 2 pour Magicien): ")
         if player_choice == "1":
             player_character = Barbarian(name="Barbare", hp=100, weapon=Weapon(name="Hache", damage=15), armor=Armor(name="Bouclier", protection=10), isPlayer1=True)
@@ -32,13 +30,10 @@ def main():
             print(Fore.RED + "Choix invalide. Veuillez choisir entre 1 et 2." + Style.RESET_ALL)
             continue
 
-        # Créez une instance d'Arena avec le joueur et un adversaire aléatoire
         arena = Arena(player_character, choose_opponent())
 
-        # Appelez la méthode fight de l'Arena pour gérer le combat
         arena.fight()
 
-        # Demandez au joueur s'il veut recommencer le jeu après la défaite
         restart_game = input("Voulez-vous recommencer le jeu? (Oui/Non): ").lower()
         if restart_game != 'oui':
             print("Merci d'avoir joué. Au revoir!")

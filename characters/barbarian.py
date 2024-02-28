@@ -1,4 +1,3 @@
-# barbarian.py
 from .character import Character
 from colorama import Fore
 

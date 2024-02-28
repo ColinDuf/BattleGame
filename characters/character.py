@@ -8,7 +8,7 @@ class Character():
         self.armor = armor
         self.isPlayer1 = isPlayer1
 
-    def attack(self, target, isPlayer=False):  # Ajoutez isPlayer=False comme argument
+    def attack(self, target, isPlayer=False):  
         damages = (self.weapon.damage - target.armor.protection)
 
         if damages < 0:

@@ -11,18 +11,14 @@ class Arena:
 
         while True:
             if current_character.isPlayer1:
-                # Si c'est au tour du joueur, laissez-le choisir l'attaque
                 current_character.attack(self.second_character, isPlayer=True)
             else:
-                # Si c'est au tour du bot, laissez-le attaquer automatiquement
                 current_character.attack(self.second_character, isPlayer=False)
 
-            # Vérifiez si l'adversaire est vaincu
             if self.second_character.hp <= 0:
                 print(f"{Fore.CYAN}Partie terminé {self.second_character.name} a été vaincu!{Fore.RESET}")
                 break
             else:
                 print(f"{self.second_character.name} a survécu !\n")
 
-            # Changez le personnage attaquant
             current_character, self.second_character = self.second_character, current_character
